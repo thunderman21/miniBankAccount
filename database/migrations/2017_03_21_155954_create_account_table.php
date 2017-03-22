@@ -18,6 +18,8 @@ class CreateAccountTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->float('account_bal');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

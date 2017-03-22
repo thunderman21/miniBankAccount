@@ -19,7 +19,8 @@ class CreateTransactionsTable extends Migration
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('type');
             $table->float('amount');
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
