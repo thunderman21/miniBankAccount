@@ -26,6 +26,7 @@ class CheckDeposit
                                             ->count();
         $total_transaction_amnt_for_day = Transaction::where('account_id' = $request->account_id)
                                                     ->where('created_at' = date('Y-m-d'))
+                                                    ->where('type' = 'deposit')
                                                     ->sum('amount')
                                                     ->get();
 

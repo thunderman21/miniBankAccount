@@ -22,10 +22,12 @@ class CheckWithdrawal
         $withdrawl_amount = $request->amount;
         $withdrawl_frequency = Transaction::where('account_id' = $request->account_id)
                                             ->where('created_at' = date('Y-m-d'))
+                                            ->where('type' = 'deposit')
                                             ->count();
 
         $total_widthdrawed_amount = Transaction::where('account_id' = $request->account_id)
                                                 ->where('created_at' = date('Y-m-d'))
+                                                ->where('type' = 'deposit')
                                                 ->sum('amount')
                                                 ->get();
         
