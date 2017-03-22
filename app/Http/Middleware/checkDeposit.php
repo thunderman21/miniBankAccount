@@ -20,11 +20,14 @@ class checkDeposit
         $account = Account::findOrFail($request->account_id);
         $deposit_amount = $request->amount;
         $account_bal = $account->account_bal;
-        $transaction_frequency = Transaction::where('created_at' = date('Y-m-d'))
+        $transaction_frequency = Transaction::where('account_id' = $request->account_id)
+                                            ->where('created_at' = date('Y-m-d'))
                                             ->where('type' = 'deposit')
                                             ->count();
-        $transaction_amnt_for_day = Transaction::where('created_at' = date('Y-m-d'))
-                                                ->sum('amount');
+        $total_transaction_amnt_for_day = Transaction::where('account_id' = $request->account_id)
+                                                    ->where('created_at' = date('Y-m-d'))
+                                                    ->sum('amount')
+                                                    ->get();
 
         /**
          * check if the maximum deposit per transaction has been deposited
@@ -41,7 +44,7 @@ class checkDeposit
         elseif($transaction_frequency > 4){
             //redirect somewhere
         }
-        elseif ($transaction_amnt_for_day => 150000) {
+        elseif ($total_transaction_amnt_for_day => 150000) {
             //redirect somewhere
         }
         return $next($request);
