@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 |				-> Account_id
 |				-> type { deposit, withdrawal }
 |				-> Amount
-|				-> Status { success, failed }
 |				-> Date
 |
 |	Endpoints : 
