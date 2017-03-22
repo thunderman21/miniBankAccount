@@ -6,7 +6,7 @@ use Closure;
 use App\Account;
 use App\Transaction;
 
-class checkDeposit
+class CheckDeposit
 {
     /**
      * Handle an incoming request.
@@ -34,7 +34,11 @@ class checkDeposit
          * Max deposit per transaction = $40,000
          */
         if($deposit_amount > 40000){
-            //redirect somewhere
+            $error_message = "The amount you have entered exceeds the allowed deposit per Transaction";
+            return response()->json([
+                    'status' => 'Not Acceptable',
+                    'error'  => $error_message,
+                ], 406);
         }
 
         /**
@@ -42,10 +46,22 @@ class checkDeposit
          * Max deposit frequency = 4 transactions/day
          */
         elseif($transaction_frequency > 4){
-            //redirect somewhere
+            $error_message = "You have exceeded the number of times you are allowed to deposit in a day";
+            return response()->json([
+                    'status' => 'Not Acceptable',
+                    'error'  => $error_message,
+                ], 406);
         }
+        /**
+         * Check if the user has exceeded the maximum total deposit allowed per day
+         * Max deposit for the day = 150k
+         */
         elseif ($total_transaction_amnt_for_day => 150000) {
-            //redirect somewhere
+            $error_message = "You have exceeded the total Amount you are allowed to deposit in a day";
+            return response()->json([
+                    'status' => 'Not Acceptable',
+                    'error'  => $error_message,
+                ], 406);
         }
         return $next($request);
     }

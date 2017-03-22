@@ -7,15 +7,12 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class AccountsTest extends TestCase
+class BalanceTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testBalance()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/balance');
+
+        $response->assertStatus(200);
     }
 }
