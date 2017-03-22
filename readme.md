@@ -18,9 +18,6 @@
 * replace amount with your figure
 
 
-
-* curl -H "Content-Type: application/json" -X POST http://localhost:8585/deposit/ -d "{\"amount\":400}"
-
 ### How to run the tests
 * Execute phpunit on the root folder
 * Install phpunit using composer if you don't have it already
