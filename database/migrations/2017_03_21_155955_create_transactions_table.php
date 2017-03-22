@@ -14,10 +14,9 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('account')->unsigned();
-            $table->foreign('account')->references('account_id')->on('users');
+            $table->integer('account_id')->unsigned();
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('type');
             $table->float('amount');
             $table->timestamps();

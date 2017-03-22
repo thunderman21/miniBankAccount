@@ -37,5 +37,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/users', function(){
      return response()
-            ->json(['name' => 'Abigail', 'state' => 'CA']); 
+            ->json(['name' => 'Abigail', 'state' => 'CA', 'date' => Carbon\Carbon::now()]); 
  });

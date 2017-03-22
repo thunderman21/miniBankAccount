@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     protected $fillable = [
-    	'account', 'type','amount'
+    	'account_id', 'type','amount'
     ]
     /**
      * Get user for each transaction
      */
-    public function users(){
-    	return $this->belongsTo('App\User');
+    public function accounts(){
+    	return $this->belongsTo('App\Account');
     }
 }
