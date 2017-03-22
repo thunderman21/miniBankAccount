@@ -18,7 +18,7 @@ class CheckWithdrawal
     public function handle($request, Closure $next)
     {   
         $account = Account::findOrFail($request->account_id);
-        $account_bal = $account->bal;
+        $account_bal = $account->account_bal;
         $withdrawl_amount = $request->amount;
         $withdrawl_frequency = Transaction::where('account_id' = $request->account_id)
                                             ->where('created_at' = date('Y-m-d'))

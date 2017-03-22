@@ -57,7 +57,7 @@ class CheckDeposit
          * Check if the user has exceeded the maximum total deposit allowed per day
          * Max deposit for the day = 150k
          */
-        elseif ($total_transaction_amnt_for_day => 150000) {
+        elseif ($total_transaction_amnt_for_day > 150000) {
             $error_message = "You have exceeded the total Amount you are allowed to deposit in a day";
             return response()->json([
                     'status' => 'Not Acceptable',

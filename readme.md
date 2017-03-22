@@ -6,9 +6,9 @@
 
 
 ### API Endpoints
-#### http://localhost:8000/balance/           [GET]
-#### http://localhost:8000/deposit/           [POST]
-#### http://localhost:8000/withdraw/          [POST]
+#### http://localhost:8000/api/balance/           [GET]
+#### http://localhost:8000/api/deposit/           [POST]
+#### http://localhost:8000/api/withdraw/          [POST]
 
 ### Executing API calls using Curl
 

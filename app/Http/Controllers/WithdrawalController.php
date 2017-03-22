@@ -12,9 +12,9 @@ class WithdrawalController extends Controller
     	$transaction = $request->all();
     	$transaction->type = 'withdraw';
     	$transaction->created_at = date('Y-m-d');
-    	$trasnaction->save();
+    	$transaction->save();
     	$account = App\Account::where("account_id" = $request->account_id);
-    	$account->account_bal = $account->bal - $request->amount;
+    	$account->account_bal = $account->account_bal - $request->amount;
     	$account->save();
 
     	return $response()->json({
