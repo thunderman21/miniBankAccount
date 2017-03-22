@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('account_id')->unsigned();
-            $table->foreign('account_id')->references('id')->on('accounts');
+            $table->foreign('account_id')->references('account_id')->on('accounts');
             $table->string('type');
             $table->float('amount');
             $table->date('created_at');
