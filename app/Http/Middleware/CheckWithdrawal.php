@@ -17,19 +17,18 @@ class CheckWithdrawal
      */
     public function handle($request, Closure $next)
     {   
-        $account = Account::findOrFail($request->account_id);
+        $account = Account::where('account_id', $request->account_id)->first();
         $account_bal = $account->account_bal;
         $withdrawl_amount = $request->amount;
-        $withdrawl_frequency = Transaction::where('account_id' = $request->account_id)
-                                            ->where('created_at' = date('Y-m-d'))
-                                            ->where('type' = 'deposit')
+        $withdrawl_frequency = Transaction::where('account_id', $request->account_id)
+                                            ->where('created_at',date('Y-m-d'))
+                                            ->where('type', 'deposit')
                                             ->count();
 
-        $total_widthdrawed_amount = Transaction::where('account_id' = $request->account_id)
-                                                ->where('created_at' = date('Y-m-d'))
-                                                ->where('type' = 'deposit')
-                                                ->sum('amount')
-                                                ->get();
+        $total_widthdrawed_amount = Transaction::where('account_id', $request->account_id)
+                                                ->where('created_at', date('Y-m-d'))
+                                                ->where('type', 'deposit')
+                                                ->sum('amount');
         
         //check if the withdrawl amount exceeds the maximum withdrawl per transaction
         //Max withdrawal per transactions 20k

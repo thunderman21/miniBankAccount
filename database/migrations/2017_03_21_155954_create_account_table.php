@@ -19,8 +19,8 @@ class CreateAccountTable extends Migration
             $table->string('email');
             $table->integer('account_id')->unsigned()->nullable()->unique();
             $table->float('account_bal');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->date('created_at')->nullable();;
+            $table->date('updated_at')->nullable();;
         });
     }
 

@@ -17,18 +17,17 @@ class CheckDeposit
      */
     public function handle($request, Closure $next)
     {
-        $account = Account::findOrFail($request->account_id);
+        $account = Account::where('account_id', $request->account_id)->first();
         $deposit_amount = $request->amount;
         $account_bal = $account->account_bal;
-        $transaction_frequency = Transaction::where('account_id' = $request->account_id)
-                                            ->where('created_at' = date('Y-m-d'))
-                                            ->where('type' = 'deposit')
+        $transaction_frequency = Transaction::where('account_id', $request->account_id)
+                                            ->where('created_at', date('Y-m-d'))
+                                            ->where('type', 'deposit')
                                             ->count();
-        $total_transaction_amnt_for_day = Transaction::where('account_id' = $request->account_id)
-                                                    ->where('created_at' = date('Y-m-d'))
-                                                    ->where('type' = 'deposit')
-                                                    ->sum('amount')
-                                                    ->get();
+        $total_transaction_amnt_for_day = Transaction::where('account_id', $request->account_id)
+                                                    ->where('created_at', date('Y-m-d'))
+                                                    ->where('type', 'deposit')
+                                                    ->sum('amount');
 
         /**
          * check if the maximum deposit per transaction has been deposited

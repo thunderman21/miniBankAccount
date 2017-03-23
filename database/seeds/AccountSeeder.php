@@ -16,7 +16,9 @@ class AccountSeeder extends Seeder
             'email' => str_random(10).'@gmail.com',
             'account_id' => '12345678',
             'account_bal' => '0',
-            'password' => bcrypt('secret'),
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d'),
+            
         ]);
     }
 }

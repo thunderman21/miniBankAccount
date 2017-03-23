@@ -8,7 +8,7 @@ class Transaction extends Model
 {
     protected $fillable = [
     	'account_id', 'type','amount'
-    ]
+    ];
     /**
      * Get user for each transaction
      */

@@ -14,9 +14,9 @@ class DepositTest extends TestCase
   	public function testDeposit()
     {
     	$data = [
-    	   		"_token" = csrf_token(),
-	    		"account" = "12345678",
-	    		"amount" = "10000",
+    	   		"_token" => csrf_token(),
+	    		"account" =>"12345678",
+	    		"amount" => "10000",
     		]
         response =  $this->post('/deposit',$data); //testcase 5th deposit
 
@@ -25,9 +25,9 @@ class DepositTest extends TestCase
     public function testMaxDeposit()
     {
     	$data = [
-    		"_token" = csrf_token,
-    		"account" = "12345678",
-    		"amount" = "45000",
+    		"_token" => csrf_token,
+    		"account" => "12345678",
+    		"amount" => "45000",
     	]
         $response = $this->post('/deposit',);
 
@@ -36,9 +36,9 @@ class DepositTest extends TestCase
     public function testDepositFrequency()
     {
     	$data = [
-    	   		"_token" = csrf_token(),
-	    		"account" = "12345678",
-	    		"amount" = "10000",
+    	   		"_token" => csrf_token(),
+	    		"account" => "12345678",
+	    		"amount" => "10000",
     		]
   
         $this->post('/deposit',$data); //first deposit
@@ -52,9 +52,9 @@ class DepositTest extends TestCase
      public function testMaxDepositForTheDay()
     {
     	$data = [
-    	   		"_token" = csrf_token(),
-	    		"account" = "12345678",
-	    		"amount" = "40000",
+    	   		"_token" => csrf_token(),
+	    		"account" => "12345678",
+	    		"amount" => "40000",
     		]
   		//4 deposits of 40000 should exceed max deposit allowed
         $this->post('/deposit',$data); //first deposit

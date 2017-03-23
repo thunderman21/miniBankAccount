@@ -20,8 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->foreign('account_id')->references('account_id')->on('accounts');
             $table->string('type');
             $table->float('amount');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->date('created_at')->nullable();
+            $table->date('updated_at')->nullable();
         });
     }
 
