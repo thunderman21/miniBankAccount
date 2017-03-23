@@ -12,14 +12,11 @@
 
 ### Executing API calls using Curl
 
-* curl http://localhost:800/api/balance/ 
+* curl http://localhost:8000/api/balance/ 
 * curl -H "Content-Type: application/json" -X POST -d '{"account_id": 12345678, "amount": amount}' http://localhost:8000/api/deposit/
 * curl -H "Content-Type: application/json" -X POST -d '{"account_id": 12345678, "amount": amount}' http://localhost:8000/api/withdraw/
 * replace amount with your figure
 
-
-
-* curl -H "Content-Type: application/json" -X POST http://localhost:8585/deposit/ -d "{\"amount\":400}"
 
 ### How to run the tests
 * Execute phpunit on the root folder
